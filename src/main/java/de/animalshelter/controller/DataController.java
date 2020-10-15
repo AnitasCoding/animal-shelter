@@ -63,6 +63,14 @@ public class DataController {
         return "redirect:/employee/";
     }
 
+    /**
+     * This makes Thymeleaf know the animal-object, which need to be filled in /employee/.
+     */
+    @ModelAttribute("animal")
+    public Animal populateAnimal() {
+        return new Animal();
+    }
+
     private ModelAndView manageDataMV(String request, Model model) {
         ModelAndView modelAndView = new ModelAndView();
         List allData = null;
