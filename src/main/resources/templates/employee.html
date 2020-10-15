@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+    user-scalable=0"
+            name="viewport"
+    />
+    <title>Tierheim</title>
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@500&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<header>
+    <script src="/js/login.js" type="text/javascript"></script>
+    <div class="club_name">
+        <div>
+            <span>Tierheim X.X</span><br/>
+            <span>Tierschutzverein X.X und Umgebung e.V.</span>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li onclick="changeURLPath('/')">Aktuelles</li>
+            <li onclick="changeURLPath('/animals-placement/')">Tiervermittlung</li>
+            <li onclick="changeURLPath('/lost-found/')">Gesucht/Gefunden</li>
+            <li class="li_login" onclick="get_login()">Mitarbeiter Login</li>
+        </ul>
+    </nav>
+</header>
+<body>
+<div class="container">
+    <div id="all_content">
+        <div class="center">
+            <form action="#" enctype="multipart/form-data" method="post" th:action="@{/addAnimal}"
+                  th:object="${animal}">
+                <table>
+                    <tr>
+                        <th>Name:</th>
+                        <th><input id="name" name="name" th:field="*{name}" title="Name" type="text"></th>
+                    </tr>
+                    <tr>
+                        <th>Alter:</th>
+                        <th><input id="age" name="age" th:field="*{age}" title="Alter" type="text"></th>
+                    </tr>
+                    <tr>
+                        <th>Bild:</th>
+                        <th><input accept="image/jpeg" id="multipartFile" name="multipartFile"
+                                   th:field="*{multipartFile}" title="Bild" type="file"></th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Verloren:</th>
+                        <th><input id="lost" name="radio" th:checked="*{status} == 'lost'" th:field="*{status}"
+                                   th:value="lost" title="Verloren" type="radio"></th>
+                    </tr>
+                    <tr>
+                        <th>Gefunden:</th>
+                        <th><input id="found" name="radio" th:checked="*{status} == 'found'" th:field="*{status}"
+                                   th:value="found" title="Gefunden" type="radio"></th>
+                    </tr>
+                    <tr>
+                        <th>Tiervermittlung:</th>
+                        <th><input id="placement" name="radio" th:checked="*{status} == 'placement'"
+                                   th:field="*{status}" th:value="placement" title="Tiervermittlung" type="radio"></th>
+                    </tr>
+                </table>
+                <input type="submit" value="Bestätigen">
+                <input onclick="changeURLPath('/')" type="button" value="Abbrechen">
+            </form>
+        </div>
+    </div>
+</div>
+<footer>
+    <div>&copy; Anita Gion</div>
+</footer>
+</body>
+</html>

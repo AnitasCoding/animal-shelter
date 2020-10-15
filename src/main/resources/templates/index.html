@@ -39,7 +39,7 @@
         <!--/*@thymesVar id="webContent" type="String"*/-->
         <div th:if="${webContent}=='news'">
             <div class="content" th:each="data : ${allData}">
-                <img class="picture" th:src="${data.byteImage}"></img>
+                <img class="picture" th:src="${data.displayImage}"></img>
                 <div class="text">
                     <span class="title" data-th-text="${data.title}"></span><br>
                     <span data-th-text="${data.information}"></span>
@@ -54,7 +54,7 @@
                 Diese Tiere suchen ein neues Zuhause.<br>
             </div>
             <div class="content" th:each="data : ${allData}">
-                <img class="picture" th:src="${data.byteImage}"></img>
+                <img class="picture" th:src="${data.displayImage}"></img>
                 <div class="text">
                     <span class="title" data-th-text="${data.name}"></span><br>
                     Alter: <span data-th-text="${data.age}"></span><br>

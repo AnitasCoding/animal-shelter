@@ -1,21 +1,38 @@
 package de.animalshelter.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
-import java.sql.SQLException;
 
 @Entity
 public class Animal {
+
+    //Colums in the database
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int aid;
     private String name;
     private int age;
-    @Lob
-    private Blob image;
-    private byte[] byteImage;
     private boolean lost;
     private boolean found;
+    @Lob
+    private Blob image;
+
+    //File for Display
+    @Transient
+    private File displayImage;
+
+    //Parameters for employee.html and addAnimal
+    @Transient
+    private MultipartFile multipartFile;
+    @Transient
+    private String status;
+
 
     public Animal() {
     }
@@ -27,7 +44,7 @@ public class Animal {
         this.image = image;
         this.lost = false;
         this.found = false;
-        this.byteImage = makeByteImage(image);
+        setDisplayImage();
     }
 
     public Animal(int aid, String name, int age, Blob image, boolean lost, boolean found) {
@@ -37,17 +54,7 @@ public class Animal {
         this.image = image;
         this.lost = lost;
         this.found = found;
-        this.byteImage = makeByteImage(image);
-    }
-
-    private byte[] makeByteImage(Blob blob) {
-        byte[] byteImage = null;
-        try {
-            byteImage = blob.getBytes(1, (int) blob.length());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return byteImage;
+        setDisplayImage();
     }
 
     public int getAid() {
@@ -98,11 +105,40 @@ public class Animal {
         this.found = found;
     }
 
-    public byte[] getByteImage() {
-        return byteImage;
+    public File getDisplayImage() {
+        return displayImage;
     }
 
-    public void setByteImage(byte[] byteImage) {
-        this.byteImage = byteImage;
+    public void setDisplayImage(File displayImage) {
+        this.displayImage = displayImage;
+    }
+
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
+    }
+
+    public void setMultipartFile(MultipartFile multipartFile) {
+        this.multipartFile = multipartFile;
+    }
+
+    public void setDisplayImage() {
+        try {
+            InputStream in = this.image.getBinaryStream();
+            OutputStream out = new FileOutputStream("../animal-shelter/src/main/resources/static/images/aid_" + this.aid + "_image.jpg");
+            byte[] buff = this.image.getBytes(1, (int) this.image.length());
+            out.write(buff);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.displayImage = new File("../images/aid_" + this.aid + "_image.jpg");
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -1,8 +1,12 @@
 package de.animalshelter.model;
 
+
 import javax.persistence.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.Date;
 
 @Entity
@@ -16,28 +20,20 @@ public class News {
     private Date date;
     @Lob
     private Blob image;
-    private byte[] byteImage;
+    @Transient
+    private File displayImage;
 
     public News(int nid, String title, String information, Date date, Blob image) {
         this.nid = nid;
         this.title = title;
         this.information = information;
         this.date = date;
-        this.byteImage = makeByteImage(image);
+        this.image = image;
+        setDisplayImage();
     }
 
     public News() {
 
-    }
-
-    private byte[] makeByteImage(Blob blob) {
-        byte[] byteImage = null;
-        try {
-            byteImage = blob.getBytes(1, (int) blob.length());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return byteImage;
     }
 
     public int getNid() {
@@ -78,5 +74,26 @@ public class News {
 
     public void setImage(Blob image) {
         this.image = image;
+    }
+
+    public File getDisplayImage() {
+        return displayImage;
+    }
+
+    public void setDisplayImage(File displayImage) {
+        this.displayImage = displayImage;
+    }
+
+    public void setDisplayImage() {
+        try {
+            InputStream in = this.image.getBinaryStream();
+            OutputStream out = new FileOutputStream("../animal-shelter/src/main/resources/static/images/nid_" + this.nid + "_image.jpg");
+            byte[] buff = this.image.getBytes(1, (int) this.image.length());
+            out.write(buff);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.displayImage = new File("../images/nid_" + this.nid + "_image.jpg");
     }
 }
