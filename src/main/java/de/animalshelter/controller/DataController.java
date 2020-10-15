@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
+/**
+ * This class maps the different path within the url to functions.
+ */
 @Controller
 public class DataController {
 
@@ -58,11 +61,6 @@ public class DataController {
         dataDao.insertAnimal(animal);
         file.delete();
         return "redirect:/employee/";
-    }
-
-    @ModelAttribute("animal")
-    public Animal populateAnimal() {
-        return new Animal();
     }
 
     private ModelAndView manageDataMV(String request, Model model) {

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * This bean executes querys in the h2-database.
+ */
 @Component
 public class DataDao {
 
@@ -45,7 +48,7 @@ public class DataDao {
                 found = true;
                 break;
         }
-        this.jdbcTemplate.update("INSERT INTO animal (aid,age,found, image, lost, name) VALUES (1,"
+        this.jdbcTemplate.update("INSERT INTO animal (age,found, image, lost, name) VALUES ("
                 + animal.getAge() + ","
                 + found + ","
                 + "file_read('"

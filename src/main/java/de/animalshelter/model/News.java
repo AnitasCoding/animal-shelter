@@ -4,15 +4,18 @@ package de.animalshelter.model;
 import javax.persistence.*;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
 import java.util.Date;
 
+/**
+ * This class produces the table news inside the h2-database.
+ * It saves data from news.
+ */
 @Entity
 public class News {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nid;
     private String title;
     @Lob
@@ -84,9 +87,12 @@ public class News {
         this.displayImage = displayImage;
     }
 
+
+    /**
+     * This function saves the image in a folder, that can be found by Thymeleaf.
+     */
     public void setDisplayImage() {
         try {
-            InputStream in = this.image.getBinaryStream();
             OutputStream out = new FileOutputStream("../animal-shelter/src/main/resources/static/images/nid_" + this.nid + "_image.jpg");
             byte[] buff = this.image.getBytes(1, (int) this.image.length());
             out.write(buff);

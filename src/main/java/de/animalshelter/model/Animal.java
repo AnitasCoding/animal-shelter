@@ -9,12 +9,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
 
+/**
+ * This class produces the table animal inside the h2-database.
+ * It saves data from animal.
+ */
 @Entity
 public class Animal {
 
     //Colums in the database
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int aid;
     private String name;
     private int age;
@@ -121,6 +125,9 @@ public class Animal {
         this.multipartFile = multipartFile;
     }
 
+    /**
+     * This function saves the image in a folder, that can be found by Thymeleaf.
+     */
     public void setDisplayImage() {
         try {
             InputStream in = this.image.getBinaryStream();
