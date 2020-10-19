@@ -40,13 +40,15 @@ public class DataDao {
     public void insertAnimal(Animal animal) {
         boolean lost = false;
         boolean found = false;
-        switch (animal.getStatus()) {
-            case "lost":
-                lost = true;
-                break;
-            case "found":
-                found = true;
-                break;
+        if (animal.getStatus() != null) {
+            switch (animal.getStatus()) {
+                case "lost":
+                    lost = true;
+                    break;
+                case "found":
+                    found = true;
+                    break;
+            }
         }
         this.jdbcTemplate.update("INSERT INTO animal (age,found, image, lost, name) VALUES ("
                 + animal.getAge() + ","

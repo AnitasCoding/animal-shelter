@@ -49,6 +49,9 @@ public class DataController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/addAnimal")
     public String addAnimal(Model model, @ModelAttribute("animal") Animal animal) {
+        if (animal.getName().isBlank() || (animal.getAge() == 0)) {
+            return "redirect:/employee/";
+        }
         File file = new File("targetFile.jpg");
         try {
             file.createNewFile();
