@@ -38,19 +38,19 @@ li:hover {
 }
 
 
-.club_name div {
+.club_text {
+    display: inline-table;
     margin-left: 23vw;
     color: white;
-    display: block;
     padding-block-start: 2vh;
 }
 
-.club_name div span:first-child {
+.club_text span:first-child {
     font-weight: 600;
     font-size: 5ex;
 }
 
-.club_name div span {
+.club_text span {
     margin: 1px;
 }
 
@@ -65,6 +65,7 @@ li:hover {
     background-size: cover;
     width: 100%;
     height: 12vh;
+    position: relative;
 }
 
 /** Content **/
@@ -124,8 +125,8 @@ footer {
     background-image: url(../images/fur-.jpg);
     width: 100%;
     height: 7.8vh;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
     color: white;
     display: flex;
     justify-self: center;
@@ -167,6 +168,45 @@ input[type="text"] {
     border-style: solid;
 }
 
+
+/** Burger Menu **/
+
+#menu {
+    display: inline-table;
+    margin: 20px 20px 20px 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+#menu_burger {
+    width: 50px;
+    height: 6px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition: all .5s ease-in-out;
+}
+
+#menu_burger::before,
+#menu_burger::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition: all .5s ease-in-out;
+}
+
+#menu_burger::before {
+    transform: translateY(-16px);
+}
+
+#menu_burger::after {
+    transform: translateY(16px);
+}
+
 /** Media Query **/
 
 @media only screen and (max-width: 755px) {
@@ -176,6 +216,11 @@ input[type="text"] {
 
     header {
         height: 12vh;
+    }
+
+    .club_text span:nth-child(2) {
+        font-weight: 600;
+        font-size: 5ex;
     }
 
     .content {
@@ -190,4 +235,46 @@ input[type="text"] {
         overflow-y: scroll;
     }
 
+    .club_text {
+        margin-left: 0vw;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .club_text span:first-child {
+        font-weight: 300;
+        font-size: 3ex;
+    }
+
+    * {
+        font-size: unset;
+    }
+
+
+    #menu_burger {
+        width: 35px;
+        height: 5px;
+    }
+
+    #menu_burger::before,
+    #menu_burger::after {
+        width: 35px;
+        height: 5px;
+    }
+
+    #menu_burger::before {
+        transform: translateY(-13px);
+    }
+
+    #menu_burger::after {
+        transform: translateY(13px);
+    }
+
+}
+
+@media only screen and (max-width: 310px) {
+    .club_text {
+        font-size: small;
+    }
 }
