@@ -14,5 +14,4 @@ Um sie sehen zu können muss das Programm heruntergeladen und innerhalb einer ID
 Desweiteren wird empfohlen die vorgefertigte testdata.sql so anzupassen, dass die Daten(News, Animal) innerhalb des vorliegenden Dateisystems gefunden werden können.
 Der Ziel des Projekts ist das Erlernen von verschiedenen Programmiersprachen.
 
-Das nächste größere anstehende Ziel ist die Einarbeitung von Spring Security, mithilfe dessen der Login erfolgen soll ohne den man in Zukunft nicht mehr Zugang zum 
-"/employee"-Bereich haben soll.
+Das nächste größere anstehende Ziel ist die Einarbeitung von Spring Security, mithilfe dessen der Login erfolgen soll ohne den man in Zukunft nicht mehr Zugang zum "/employee"-Bereich haben soll. Des Weiteren soll eine vertikale Navbar entstehen, sobald man den Burgermenü-Button (dieser erscheint ab einer Weite von 755px) klickt.
