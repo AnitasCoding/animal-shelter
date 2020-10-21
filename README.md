@@ -12,6 +12,6 @@ Es gibt folgende Pages die auf folgende URL-Pfade reagieren, welche über das Me
 Alle Daten von Tiere und Neuigkeiten werden aus der Datenbank entnommen. 
 Um sie sehen zu können muss das Programm heruntergeladen und innerhalb einer IDE gebaut werden.
 Desweiteren wird empfohlen die vorgefertigte testdata.sql so anzupassen, dass die Daten(News, Animal) innerhalb des vorliegenden Dateisystems gefunden werden können.
-Der Ziel des Projekts ist das Erlernen von verschiedenen Programmiersprachen.
+Das Ziel des Projekts ist das Erlernen von verschiedenen Programmiersprachen.
 
 Das nächste größere anstehende Ziel ist die Einarbeitung von Spring Security, mithilfe dessen der Login erfolgen soll. Ohne eine erfolgreiche Authentifizierung soll in Zukunft kein Zugang zum "/employee"-Bereich gewährleistet sein. Des Weiteren soll eine vertikale Navbar entstehen, sobald man den Burgermenü-Button (dieser erscheint ab einer Weite von 755px) klickt.
