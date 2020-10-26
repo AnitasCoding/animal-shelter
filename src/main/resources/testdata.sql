@@ -16,3 +16,6 @@ INSERT INTO animal (age, image, found, lost, name)
 VALUES (5, file_read(
         'C:\Users\1989a\IdeaProjects\animal-shelter\src\main\resources\static\images\jae-park-7GX5aICb5i4-unsplash.jpg'),
         false, false, 'Schnurri');
+
+INSERT INTO logincredentials (name, password)
+VALUES ('anita', '1234');
