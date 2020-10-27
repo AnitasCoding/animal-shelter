@@ -54,11 +54,6 @@ li:hover {
     margin: 1px;
 }
 
-.li_login {
-    margin-left: auto;
-    margin-right: 0;
-}
-
 .club_name {
     background-image: url(../images/fur_header.jpg);
     background-repeat: no-repeat;
@@ -135,15 +130,6 @@ footer {
 
 footer div {
     margin: auto;
-}
-
-#login {
-    margin: auto;
-    background-color: #8F3302;
-    padding: 30px;
-    width: min-content;
-    text-align: center;
-    color: white;
 }
 
 /** Employee und Login **/
