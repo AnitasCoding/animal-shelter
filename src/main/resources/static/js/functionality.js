@@ -5,7 +5,7 @@ function get_login() {
     div.setAttribute("class", "center");
     div.setAttribute("id", "login");
     let password_form = document.createElement("form");
-    password_form.setAttribute("action", "login");
+    password_form.setAttribute("onclick", "changeURLPath('/login/')");
     password_form.setAttribute("method", "post");
     div.appendChild(password_form);
     let span_login_name = document.createElement("span");
